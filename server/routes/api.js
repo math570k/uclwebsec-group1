@@ -1,16 +1,10 @@
-var express = require("express");
-var router = express.Router();
-var db = require("../db");
+const express = require("express");
+const router = express.Router();
 
-/* GET home page. */
-router.get("/sample", (req, res) => {
-  db.query(`select * from sample`, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.send(results);
-    }
-  });
-});
+const auth = require("./auth");
+const protected = require("./protected");
+
+router.use("/auth", auth);
+router.use("/protected", protected);
 
 module.exports = router;
