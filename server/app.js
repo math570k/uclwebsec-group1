@@ -1,12 +1,13 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+require("dotenv").config();
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const cors = require("cors");
 
-var apiRouter = require("./routes/api");
+const apiRouter = require("./routes/api");
 
-var app = express();
+const app = express();
 
 app.use(cors());
 app.use(logger("dev"));
