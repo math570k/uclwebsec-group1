@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import "./homepage.styles.css";
 import AuthService from "../../services/auth.service";
 import ProtectedService from "../../services/protected.service";
+import UserList from "../user-list/user-list.component.js";
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -14,8 +15,6 @@ export default class HomePage extends React.Component {
       isLoaded: false,
       message: "",
     };
-
-    console.log(this.state);
   }
 
   componentDidMount() {
@@ -44,6 +43,7 @@ export default class HomePage extends React.Component {
         <h1>Hello {this.state.currentUser.user.username}</h1>
         {this.message()}
         <button onClick={this.logoutHandler}>Logout</button>
+        <UserList />
       </div>
     ) : (
       <Redirect to={{ pathname: "/login" }} />
