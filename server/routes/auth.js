@@ -24,7 +24,7 @@ router.post("/signup", function (req, res) {
       }
 
       // Create user
-      const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+      const sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?)";
       db.query(sql, [name, email, hash], function (err, result) {
         if (err) return res.status(400).json(err);
         return res.status(201).json({
@@ -41,7 +41,7 @@ router.post("/signup", function (req, res) {
 router.post("/signin", function (req, res) {
   // Find user by email
   const { email, password } = req.body;
-  const sql = "SELECT * FROM users WHERE email = ?";
+  const sql = "SELECT * FROM user WHERE email = ?";
   db.query(sql, email, function (err, sqlResult) {
     if (err) return res.status(404).json(err);
 

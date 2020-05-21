@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
-var pool  = mysql.createPool({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'root',
-    database : 'test'
+const db = mysql.createConnection({
+    host: process.env.MYSQL_HOST_IP,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 });
 
-exports.pool = pool;
+module.exports = db;

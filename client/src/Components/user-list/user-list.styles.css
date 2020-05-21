@@ -18,6 +18,7 @@ img {
     left: 0;
     height: 500px;
     width: 500px;
+    background-color: #191919;
   }
   
   .checked {
@@ -26,9 +27,9 @@ img {
   
   /* CARD HEADER RELATED */
   .card-header {
-    background-color: white;
-    border-width: 3px;
-    border-color: #f7f7f7;
+    background-color: #191919;
+    border-width: 0.2px;
+    border-color: #2ecc71;
     display: flex;
     padding-top: 0;
     padding-bottom: 0;
@@ -36,6 +37,8 @@ img {
   
   .card-header-title-container {
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
     flex: 10; 
     align-items: center;
   }

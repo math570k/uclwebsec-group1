@@ -2,15 +2,21 @@ import React from 'react';
 import styled from "styled-components";
 import { FaStar, FaFileAlt, FaPaperclip } from "react-icons/fa";
 import './list-item.styles.css';
+import Auth from '../../services/auth.service';
 
-const ListItem = ({ name, key}) => {
+
+const ListItem = ({ name, friend_user_id}) => {
 
     //Implement proper functionality
-    const handleClick = () => { 
-        
-        
-        
-        alert("My name is: " + name + " and my id is: " + key)
+    const handleClick = async () => { 
+
+        try {
+            const response = await fetch(`http://localhost:8000/addfriend/${friend_user_id}`, {
+                method: "POST",
+            });
+          } catch (error) {
+            console.error(error.message)
+          }        
     }
 
     return (
