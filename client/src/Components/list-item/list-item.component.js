@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { FaStar, FaFileAlt, FaPaperclip } from "react-icons/fa";
 import './list-item.styles.css';
 
-const ListItem = ({ name, userId}) => {
+const ListItem = ({ name, key}) => {
 
     //Implement proper functionality
-    const handleClick = () => {
-        alert("My name is: " + name + " and my id is: " + userId)
+    const handleClick = () => { 
+        
+        
+        
+        alert("My name is: " + name + " and my id is: " + key)
     }
 
     return (

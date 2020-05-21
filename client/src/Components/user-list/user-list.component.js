@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ListItem from "../list-item/list-item.component";
 import styled from "styled-components";
 import "./user-list.styles.css";
 import { FaStar } from "react-icons/fa";
 
-export default () => {
+
+const UserList = () => {
+
+  const [users, setUsers] = useState([])
+
+
   const testusers = [
     { id: 1, name: "John Smith 1" },
     { id: 2, name: "John Smith 2" },
@@ -19,6 +24,22 @@ export default () => {
     { id: 11, name: "John Smith 11" },
   ];
 
+  const getUsers = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/users");
+      const jsonData = await response.json();
+      setUsers(jsonData);
+    } catch (error) {
+      console.error(error.message)
+    }
+  };
+
+
+  useEffect(() => {
+    getUsers();
+}, []);
+
+
   return (
     <div className="card">
       <div className="card-header">
@@ -28,8 +49,8 @@ export default () => {
         </div>
       </div>
       <div className="card-body scroll">
-        {testusers.map((user) => {
-          return <ListItem name={user.name} userId={user.id} />;
+        {users.map((user) => {
+          return <ListItem name={user.name} key={user.user_id} />;
         })}
       </div>
     </div>
@@ -58,3 +79,5 @@ const H1 = styled.h1`
   display: inline-block;
   font-weight: bold;
 `;
+
+export default UserList;
