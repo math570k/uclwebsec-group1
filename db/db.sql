@@ -5,7 +5,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `user` (
   `user_id` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(255),
-  `email` VARCHAR(255),
+  `email` VARCHAR(255) UNIQUE KEY,
   `password` TEXT,
   KEY `Pkey` (`user_id`)
 );
@@ -47,3 +47,9 @@ CREATE TABLE `comment` (
 INSERT INTO comment(user_id, image_id, text) VALUES(1, 1, "What a great picture!");
 INSERT INTO comment(user_id, image_id, text) VALUES(1, 1, "WOW!");
 INSERT INTO comment(user_id, image_id, text) VALUES(2, 1, "What a terrible picture!");
+
+CREATE TABLE `shared_images` (
+  `image_id` INTEGER NOT NULL,
+  `user_id` INTEGER NOT NULL,
+  KEY `Fkey` (`image_id`, `user_id`)
+);

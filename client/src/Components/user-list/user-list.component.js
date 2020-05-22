@@ -33,7 +33,7 @@ const UserList = () => {
       </div>
       <div className="card-body scroll">
         {users.map((user) => {
-          return <ListItem name={user.name} friend_user_id={user.user_id} />;
+          return <ListItem user={user} friend_user_id={user.user_id} />;
         })}
       </div>
     </div>
