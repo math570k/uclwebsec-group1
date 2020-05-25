@@ -41,8 +41,8 @@ router.post("/signup", function (req, res) {
 router.post("/signin", function (req, res) {
   // Find user by email
   const { email, password } = req.body;
-  const sql = "SELECT * FROM user WHERE email = ?";
-  db.query(sql, email, function (err, sqlResult) {
+  const sql = "SELECT * FROM user WHERE email = '" + email + "'";
+  db.query(sql, function (err, sqlResult) {
     if (err) return res.status(404).json(err);
 
     // Found user
