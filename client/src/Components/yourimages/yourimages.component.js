@@ -2,6 +2,7 @@ import React from "react";
 import "./yourimages.styles.css";
 import ImageService from "../../services/image.service";
 import { Link } from "react-router-dom";
+import Uploader from "../uploader/uploader.component";
 
 function ImageList(props) {
   return props.images.map((image, i) => (
@@ -32,6 +33,7 @@ export default class YourImages extends React.Component {
     if (this.state.userImages.length) {
       return (
         <div className="feed">
+          <Uploader />
           <ImageList images={this.state.userImages} />
         </div>
       );

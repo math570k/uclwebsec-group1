@@ -36,10 +36,13 @@ export default class CommentImages extends React.Component {
       ImageService.getImageSharedUsers(imageId).then((users) => {
         let shared = false;
         users.forEach((user) => {
-          if (user.user_id === authUser.id || this.state.isOwner) {
+          if (user.user_id === authUser.id) {
             shared = true;
           }
         });
+        if (this.state.isOwner) {
+          shared = true;
+        }
         if (shared) {
           this.setState({ users: users });
         } else {
@@ -130,7 +133,7 @@ export default class CommentImages extends React.Component {
                       type="checkbox"
                       value={friend.friend_user_id}
                       defaultChecked={this.state.users.find(
-                        (user) => user.user_id == friend.friend_user_id
+                        (user) => user.user_id === friend.friend_user_id
                       )}
                     />
                     {friend.name}
