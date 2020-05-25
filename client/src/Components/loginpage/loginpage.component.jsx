@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./loginpage.styles.css";
 import AuthService from "../../services/auth.service";
 
-
 export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +40,6 @@ export default class LoginPage extends React.Component {
 
     AuthService.login(this.state.email, this.state.password).then(
       (response) => {
-        console.log(response);
         this.setState({
           message: response.message,
           success: true,

@@ -2,8 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import "./homepage.styles.css";
 import AuthService from "../../services/auth.service";
-import ProtectedService from "../../services/protected.service";
-import UserList from "../user-list/user-list.component.js";
+import Feed from "../feed/feed.component";
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -13,17 +12,7 @@ export default class HomePage extends React.Component {
     this.state = {
       currentUser: AuthService.getCurrentUser(),
       isLoaded: false,
-      message: "",
     };
-  }
-
-  componentDidMount() {
-    ProtectedService.getProtectedRoute().then((response) => {
-      this.setState({
-        isLoaded: true,
-        message: response.data.message,
-      });
-    });
   }
 
   logoutHandler() {
@@ -39,11 +28,8 @@ export default class HomePage extends React.Component {
 
   render() {
     return AuthService.isAuthenticated() ? (
-      <div>
-        <h1>Hello {this.state.currentUser.user.username}</h1>
-        {this.message()}
-        <button onClick={this.logoutHandler}>Logout</button>
-        <UserList />
+      <div className="homepage">
+        <Feed />
       </div>
     ) : (
       <Redirect to={{ pathname: "/login" }} />

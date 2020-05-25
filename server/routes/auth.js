@@ -56,7 +56,7 @@ router.post("/signin", function (req, res) {
 
         // Create a token if the user was found
         const token = jwt.sign(
-          { id: dbUser.id, name: dbUser.name, email: dbUser.email },
+          { id: dbUser.user_id, name: dbUser.name, email: dbUser.email },
           process.env.SECRET,
           {
             expiresIn: "1h",
@@ -66,6 +66,7 @@ router.post("/signin", function (req, res) {
         res.status(201).json({
           message: "User " + dbUser.name + " logged in!",
           user: {
+            id: dbUser.user_id,
             username: dbUser.name,
             email: dbUser.email,
           },

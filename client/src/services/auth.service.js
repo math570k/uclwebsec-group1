@@ -5,7 +5,7 @@ const API_URL = "http://localhost:8000";
 class AuthService {
   login(email, password) {
     return axios
-      .post(API_URL + "/signin", { email, password })
+      .post(API_URL + "/api/auth/signin", { email, password })
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem(
@@ -26,7 +26,7 @@ class AuthService {
   }
 
   register(name, email, password) {
-    return axios.post(API_URL + "/signup", { name, email, password });
+    return axios.post(API_URL + "/api/auth/signup", { name, email, password });
   }
 
   getCurrentUser() {
