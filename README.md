@@ -7,3 +7,5 @@ Repository for a web security project on University College Lillebælt. The proj
 Install [Docker](https://www.docker.com/get-started) on your machine.
 
 Run `docker-compose build` to build services needed to run the application. After it is done run `docker-compose up` to run the application on <localhost:3000>.
+
+Rename the `./server/.env.example` file to `./server/.env` and change the secret key to something secure.

@@ -30,15 +30,15 @@ export default class YourImages extends React.Component {
     });
   }
   render() {
-    if (this.state.userImages.length) {
-      return (
-        <div className="feed">
-          <Uploader />
+    return (
+      <div className="feed">
+        <Uploader />
+        {this.state.userImages.length ? (
           <ImageList images={this.state.userImages} />
-        </div>
-      );
-    } else {
-      return <div className="feed feed--empty">No images uploaded :(</div>;
-    }
+        ) : (
+          <div className="feed feed--empty">No images uploaded :(</div>
+        )}
+      </div>
+    );
   }
 }

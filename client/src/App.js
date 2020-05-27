@@ -7,7 +7,6 @@ import CommentImages from "./Components/commentimages/commentimages.component";
 import NavBar from "./Components/navbar/navbar.component";
 import YourImage from "./Components/yourimages/yourimages.component";
 import Friends from "./Components/friends/friends.component";
-import Feed from "./Components/uploader/uploader.component";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route exact path="/yourimages" component={YourImage} />
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/image/:id" component={CommentImages} />
-        <Route exact path="/feed" component={Feed} />
       </Switch>
     </div>
   );
